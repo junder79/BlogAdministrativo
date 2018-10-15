@@ -1,0 +1,19 @@
+
+
+{% extends 'blog/base.html' %} 
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="titulo-post ">Nuevo Post</h1>
+<section class="row" >
+	<section class="col-sm-12" >
+		<form method="post" class="post-form" enctype="multipart/form-data">{% csrf_token %}
+		    <!--{{ form.as_p }}-->
+		    <p>{{form.title|as_crispy_field}}</p>
+		    <p>{{form.text|as_crispy_field}}</p>
+		    {{form.imagenes}}
+		    <button type='submit' class="save btn btn-success">Guardar</button>
+			
+		</form>
+	</section>
+</section>
+{% endblock %}

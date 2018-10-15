@@ -1,0 +1,19 @@
+<!-- Va a externder del archivo base -->
+{% extends 'blog/base.html' %}
+
+{% block content %} 
+	<h1 class="titulo-post">Últimos Post</h1>
+	{% for post in posts %}
+			<div class="post" >
+				<h1><a class="titulo-posteo"  style="text-decoration:none" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+				<p>{{post.text}}</p>
+				{% if post.imagenes %}
+		                <img src="{{post.imagenes.url}}" class="img-responsive" >
+		        {% endif %}
+				<div class="date" >
+					<h6>Fecha de Publicacion :{{ post.published_date }}</h6>
+				</div>
+				
+			</div>
+	{% endfor %}
+{% endblock %}	
